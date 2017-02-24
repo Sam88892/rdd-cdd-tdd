@@ -28,7 +28,7 @@
                                   3:Type the command "node cli.js city country"
                                   4: The weather is displayed in the console
 
-                                  You can see an example at this adress
+                                  You can see an example at this adress : https://github.com/Sam88892/rdd-cdd-tdd/blob/master/cli.PNG?raw=true
                                   
                                   
                                   Thanks for reading me
