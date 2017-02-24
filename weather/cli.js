@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 'use strict';
 
-const meow = require('meow');
+const meow = require('meow');         // Call of the necessaries librairies
 const chalk = require('chalk');
 const updateNotifier = require('update-notifier');
 const pkg = require('./package.json');
@@ -25,13 +25,13 @@ const cli = meow({
 	]
 });
 
-function _toCelcius(temp) {
+function _toCelcius(temp) {   // translate the temperature tu celcius
 	return Math.round(((temp - 32) * 5) / 9);
 }
 
 updateNotifier({ pkg}).notify();
 
-weather(cli.input, (err, result) => {
+weather(cli.input, (err, result) => {  //error management
 	if (err) {
 		console.log(chalk.bold.red(err));
 		process.exit(1);
@@ -46,13 +46,13 @@ weather(cli.input, (err, result) => {
 		temperature = result.query.results.channel.item.condition.temp + 'F';
 	} else {
 		temperature = _toCelcius(result.query.results.channel.item.condition.temp) + 'C';
-	}
+	}    //Takes the arguments and sends the request
 
-	let city = cli.input[0] ? cli.input[0] : 'Dhaka';
+	let city = cli.input[0] ? cli.input[0] : 'Dhaka';        //Default values
 	let country = cli.input[1] ? cli.input[1] : 'Bangladesh';
 
-	console.log(chalk.red(city + ', ' + country));
+	console.log(chalk.red(city + ', ' + country));                    //Print the informations in the console
 	console.log(chalk.cyan('Condition: ' + chalk.yellow(condition)));
 	console.log(chalk.cyan('Temperature: ' + chalk.yellow(temperature)));
-	process.exit();
+	process.exit(); // exit the program
 });
